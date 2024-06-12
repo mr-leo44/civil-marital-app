@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Child;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
 class Couple extends Model
 {
     use HasFactory;
     public $fillable = [
-    'family_name',
+        'family_name',
         'father_name',
         'mother_name',
         'parents_email',
@@ -20,4 +22,8 @@ class Couple extends Model
         'wedding_act'
     ];
 
+    public function childs(): HasMany
+    {
+        return $this->hasMany(Child::class);
+    }
 }
